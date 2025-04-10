@@ -3,24 +3,22 @@ import CartMaster from "./CartMaster.js";
 import ProductMaster from "./ProductMaster.js";
 
 export default class Controller{
-    #productsInCart = [];
+    #productsInCart = [0,1];
+    #articleElement;
     constructor(){
+         this.#articleElement = document.createElement("article");
 
-
-        
-        
-
-        new ProductMaster(this.#productsInCart = []);
+        new ProductMaster(this.#productsInCart);
 
         document.querySelector("#kezdolapgomg").addEventListener('mousedown', ()=>{
             document.querySelector("main").innerHTML = "";
-            new ProductMaster(this.#productsInCart = []);
+            new ProductMaster(this.#productsInCart);
         })
 
         document.querySelector("#kosargomb").addEventListener('mousedown', ()=>{
             document.querySelector("main").innerHTML = "";
-            const articleElement = document.createElement("article")
-            new CartMaster(PRODUCTSLIST, this.#productsInCart = [], articleElement);
+            
+            new CartMaster(PRODUCTSLIST, this.#productsInCart, this.#articleElement);
         })
 
         this.add_addToCart_event_listener();
@@ -34,8 +32,10 @@ export default class Controller{
     }
 
     add_delete_event_listener(){
-        document.addEventListener('delete', (event)=>{
+        window.addEventListener('delete', (event)=>{
             this.#productsInCart.splice(event.detail, 1);
+            this.#articleElement.innerHTML = '';
+            new CartMaster(PRODUCTSLIST, this.#productsInCart, this.#articleElement);
         })
     }
 }

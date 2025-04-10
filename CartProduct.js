@@ -15,7 +15,8 @@ export default class CartProduct {
         this.#index = index;
         this.#price = price;
         this.display();
-        this.#selfElement = document.querySelector(".torles:last-child");
+        this.#selfElement = this.#parentElem.querySelector(".text:last-child .torles");
+        console.log(this.#selfElement);
         this.delete();
     }
 
@@ -32,6 +33,7 @@ export default class CartProduct {
 
     delete() {
         this.#selfElement.addEventListener("click", ()=> {
+            console.log(this.#index);
             const e = new CustomEvent("delete", {detail: this.#index});
             window.dispatchEvent(e);
         });
