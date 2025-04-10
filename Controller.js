@@ -4,7 +4,9 @@ import ProductMaster from "./ProductMaster.js";
 
 export default class Controller{
     constructor(){
+
+        
         new ProductMaster();
-        new CartMaster();
+        
     }
 }
