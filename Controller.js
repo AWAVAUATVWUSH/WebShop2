@@ -6,17 +6,17 @@ export default class Controller{
     #productsInCart = [];
     constructor(){
 
-        new ProductMaster(this.#productsInCart = []);
+        new ProductMaster(this.#productsInCart);
 
         document.querySelector("#kezdolapgomg").addEventListener('mousedown', ()=>{
             document.querySelector("main").innerHTML = "";
-            new ProductMaster(this.#productsInCart = []);
+            new ProductMaster(this.#productsInCart);
         })
 
         document.querySelector("#kosargomb").addEventListener('mousedown', ()=>{
             document.querySelector("main").innerHTML = "";
             const articleElement = document.createElement("article")
-            new CartMaster(PRODUCTSLIST, this.#productsInCart = [], articleElement);
+            new CartMaster(PRODUCTSLIST, this.#productsInCart, articleElement);
         })
 
         this.add_addToCart_event_listener();
