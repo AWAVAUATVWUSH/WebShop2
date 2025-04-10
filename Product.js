@@ -9,6 +9,7 @@ export default class Product{
     #nameElement
     #imageElement
     #priceElement
+    #cardBodyElement
     #addToCartButtonElement
 
     constructor(parentElement, name, image, price, index){
@@ -19,19 +20,26 @@ export default class Product{
         this.#index = index;
 
         this.#selfElement = document.createElement('div');
-        this.#selfElement.classList.add("product")
+        this.#selfElement.classList.add("card");
+        this.#selfElement.style.width = "200px";
 
-        this.#nameElement = document.createElement('div');
-        this.#nameElement.classList.add("productName");
+        this.#imageElement = document.createElement('img');
+        this.#imageElement.classList.add("card-img-top");
+        this.#imageElement.src = `${this.#image}`;
+        this.#imageElement.alt = "IMG GOES HERE";
 
-        this.#imageElement = document.createElement('div');
-        this.#imageElement.classList.add("productImage");
+        this.#cardBodyElement = document.createElement('div');
+        this.#imageElement.classList.add("card-body");
 
-        this.#priceElement = document.createElement('div');
-        this.#priceElement.classList.add("productPrice");
+        this.#nameElement = document.createElement('h4');
+        this.#nameElement.classList.add("card-title");
 
-        this.#addToCartButtonElement = document.createElement('button');
-        this.#addToCartButtonElement.classList.add("addToCartButton");
+        this.#priceElement = document.createElement('p');
+        this.#priceElement.classList.add("card-text");
+
+        this.#addToCartButtonElement = document.createElement('a');
+        this.#addToCartButtonElement.classList.add("btn", "btn-primary");
+        this.#addToCartButtonElement.href = "#";
 
         this.display();
         this.add_addToCart_event_dispatcher();
@@ -39,15 +47,15 @@ export default class Product{
 
     display(){
         this.#parentElement.appendChild(this.#selfElement);
-        this.#selfElement.appendChild(this.#nameElement);
         this.#selfElement.appendChild(this.#imageElement);
-        this.#selfElement.appendChild(this.#priceElement);
-        this.#selfElement.appendChild(this.#addToCartButtonElement);
+        this.#selfElement.appendChild(this.#cardBodyElement);
+        this.#cardBodyElement.appendChild(this.#nameElement);
+        this.#cardBodyElement.appendChild(this.#priceElement);
+        this.#cardBodyElement.appendChild(this.#addToCartButtonElement);
 
-        this.#nameElement.innerHTML = `<h2>${this.#name}</h2>`;
-        this.#imageElement.innerHTML = `<img src="${this.#image}" alt="none">`
-        this.#priceElement.innerHTML = `<p>${this.#price}</p>`;
-        this.#addToCartButtonElement.innerHTML = `<p>Add To Cart</p>`;
+        this.#nameElement.innerHTML = this.#name;
+        this.#priceElement.innerHTML = `${this.#price}Ft`;
+        this.#addToCartButtonElement.innerHTML = "Add To Cart";
     }
 
     add_addToCart_event_dispatcher(){

@@ -1,0 +1,15 @@
+main{
+    border: 1px dashed red;
+}
+
+article{
+    border: 1px dashed blue;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+aside{
+    border: 1px dashed green;
+}

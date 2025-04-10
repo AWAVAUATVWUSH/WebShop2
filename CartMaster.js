@@ -9,10 +9,7 @@ export default class CartMaster{
         this.list = list;
         this.displayCartProducts();
     }
-
-
-
-
+    
     displayCartProducts() {
         this.#articleElem.innerHTML = "";
         for (let index = 0; index < this.list.length; index++) {

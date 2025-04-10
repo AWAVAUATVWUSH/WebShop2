@@ -6,10 +6,6 @@ export default class Controller{
     #productsInCart = [];
     constructor(){
 
-
-        
-        
-
         new ProductMaster(this.#productsInCart = []);
 
         document.querySelector("#kezdolapgomg").addEventListener('mousedown', ()=>{
